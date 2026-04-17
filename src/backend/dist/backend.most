@@ -1,0 +1,25 @@
+// Version: 1.0.0
+type Category__936342486 = Text;
+type ExpenseId__749238 = Text;
+type Expense__809941540 =
+  {
+    amount : Float;
+    category : Category__936342486;
+    createdAt : Timestamp__301639476;
+    date : Text;
+    id : ExpenseId__749238;
+    note : ?Text
+  };
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type Timestamp__301639476 = Int;
+actor {
+  stable var budget : {var value : Float};
+  stable expenses :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Expense__809941540]];
+      var elementIndex : Nat__490723111
+    };
+  stable var nextId : {var value : Nat}
+};

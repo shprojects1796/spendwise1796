@@ -1,0 +1,25 @@
+{
+  "overview": "SpendWise is an AI-powered financial habit analyzer that helps users track expenses, visualize spending patterns, get smart predictions, and receive personalized suggestions to improve their financial habits.",
+  "features": [
+    "Mock login with personalized welcome",
+    "Expense tracking with CRUD operations",
+    "Smart dashboard with pie and bar charts",
+    "AI-simulated spending insights",
+    "Next-month spending prediction",
+    "Dynamic smart suggestions engine",
+    "Budget management with color-coded progress bar",
+    "Dark mode toggle",
+    "Responsive fintech-style UI"
+  ],
+  "category": "productivity-finance",
+  "tags": [
+    "finance",
+    "expense-tracker",
+    "budget",
+    "analytics",
+    "fintech",
+    "ai-insights",
+    "dashboard"
+  ],
+  "last_updated": "2026-04-16T17:21:44.155Z"
+}

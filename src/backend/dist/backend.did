@@ -1,0 +1,63 @@
+type WeeklyTrend = 
+ record {
+   currentWeekTotal: float64;
+   percentageChange: float64;
+   previousWeekTotal: float64;
+ };
+type UpdateExpenseInput = 
+ record {
+   amount: float64;
+   category: Category;
+   date: text;
+   id: ExpenseId;
+   note: opt text;
+ };
+type Timestamp = int;
+type Insight = 
+ record {
+   insightType: text;
+   message: text;
+ };
+type ExpenseId = text;
+type Expense = 
+ record {
+   amount: float64;
+   category: Category;
+   createdAt: Timestamp;
+   date: text;
+   id: ExpenseId;
+   note: opt text;
+ };
+type CreateExpenseInput = 
+ record {
+   amount: float64;
+   category: Category;
+   date: text;
+   note: opt text;
+ };
+type CategoryBreakdown = 
+ record {
+   bills: float64;
+   food: float64;
+   health: float64;
+   other: float64;
+   shopping: float64;
+   travel: float64;
+ };
+type Category = text;
+service : {
+  categoryBreakdown: () -> (CategoryBreakdown) query;
+  createExpense: (input: CreateExpenseInput) -> (Expense);
+  deleteExpense: (id: ExpenseId) -> (bool);
+  getBudget: () -> (float64) query;
+  getExpense: (id: ExpenseId) -> (opt Expense) query;
+  getInsights: () -> (vec Insight) query;
+  getSuggestions: () -> (vec text) query;
+  listExpenses: () -> (vec Expense) query;
+  monthlySpending: (month: text) -> (float64) query;
+  predictNextMonth: () -> (float64) query;
+  setBudget: (amount: float64) -> ();
+  totalSpending: () -> (float64) query;
+  updateExpense: (input: UpdateExpenseInput) -> (bool);
+  weeklyTrend: () -> (WeeklyTrend) query;
+}

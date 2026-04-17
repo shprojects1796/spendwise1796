@@ -1,0 +1,61 @@
+import type { backendInterface } from "../backend";
+
+export const mockBackend: backendInterface = {
+  categoryBreakdown: async () => ({
+    food: 420.5,
+    travel: 180.0,
+    bills: 310.75,
+    shopping: 250.0,
+    health: 95.0,
+    other: 60.25,
+  }),
+  createExpense: async (input) => ({
+    id: "exp-new",
+    date: input.date,
+    note: input.note,
+    category: input.category,
+    amount: input.amount,
+    createdAt: BigInt(Date.now()) * BigInt(1_000_000),
+  }),
+  deleteExpense: async (_id) => true,
+  getBudget: async () => 2000,
+  getExpense: async (_id) => ({
+    id: "exp-1",
+    date: "2026-04-10",
+    note: "Lunch with team",
+    category: "Food",
+    amount: 45.0,
+    createdAt: BigInt(Date.now()) * BigInt(1_000_000),
+  }),
+  getInsights: async () => [
+    { insightType: "overspending", message: "You are spending too much on Food this month." },
+    { insightType: "spike", message: "Your expenses increased by 20% compared to last week." },
+    { insightType: "info", message: "Shopping expenses are above average for this period." },
+  ],
+  getSuggestions: async () => [
+    "Reduce dining out — try cooking at home 3x per week",
+    "Limit weekly shopping to your planned budget",
+    "Review your subscription bills for unused services",
+    "Set aside 20% of income as savings before spending",
+  ],
+  listExpenses: async () => [
+    { id: "exp-1", date: "2026-04-14", category: "Food", amount: 52.5, note: "Dinner at restaurant", createdAt: BigInt(1744646400) * BigInt(1_000_000) },
+    { id: "exp-2", date: "2026-04-13", category: "Travel", amount: 38.0, note: "Taxi to airport", createdAt: BigInt(1744560000) * BigInt(1_000_000) },
+    { id: "exp-3", date: "2026-04-12", category: "Shopping", amount: 120.0, note: "New shoes", createdAt: BigInt(1744473600) * BigInt(1_000_000) },
+    { id: "exp-4", date: "2026-04-11", category: "Bills", amount: 85.0, note: "Electricity bill", createdAt: BigInt(1744387200) * BigInt(1_000_000) },
+    { id: "exp-5", date: "2026-04-10", category: "Health", amount: 30.0, note: "Pharmacy", createdAt: BigInt(1744300800) * BigInt(1_000_000) },
+    { id: "exp-6", date: "2026-04-08", category: "Food", amount: 18.75, note: "Lunch", createdAt: BigInt(1744128000) * BigInt(1_000_000) },
+    { id: "exp-7", date: "2026-04-07", category: "Shopping", amount: 65.0, note: "Books", createdAt: BigInt(1744041600) * BigInt(1_000_000) },
+    { id: "exp-8", date: "2026-04-05", category: "Travel", amount: 22.0, note: "Bus pass", createdAt: BigInt(1743868800) * BigInt(1_000_000) },
+  ],
+  monthlySpending: async (_month) => 1316.5,
+  predictNextMonth: async () => 1480.0,
+  setBudget: async (_amount) => undefined,
+  totalSpending: async () => 4220.75,
+  updateExpense: async (_input) => true,
+  weeklyTrend: async () => ({
+    currentWeekTotal: 305.25,
+    previousWeekTotal: 254.75,
+    percentageChange: 19.8,
+  }),
+};
